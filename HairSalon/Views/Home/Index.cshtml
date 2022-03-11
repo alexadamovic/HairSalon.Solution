@@ -4,3 +4,13 @@
 
 <h1>Eau Claire's Salon: Employee Client Management Portal</h1>
 <p>@Html.ActionLink("List of Stylists", "Index", "Stylists")</p>
+
+<h2>Search</h2>
+
+<h4>Search for a Client</h4>
+
+@using (Html.BeginForm())
+{
+  <input type="text" name="search" />
+  <input type="submit" value="Search" />
+}
