@@ -12,12 +12,17 @@
   <h3>No current clients</h3>
 }
 
-@foreach (Client client in Model.Clients)
-{
-  <h3>@client.Name</h3>
-}
+<ul>
+  @foreach (Client client in Model.Clients)
+  {
+    <li>@client.Name</li>
+    <ul>
+      <li>@Html.ActionLink("Delete", "Delete", "Clients", new { id = client.ClientId }) | @Html.ActionLink("Edit", "Edit", "Clients", new { id = client.ClientId })</li>
+    </ul>
+  }
+</ul>  
 
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
+<h3>@Html.DisplayNameFor(model => model.Specialty): @Html.DisplayFor(model => model.Specialty)<h3>
 <p>@Html.ActionLink("Add a client", "Create", "Clients")</p>
 <p>@Html.ActionLink("Back to stylists", "Index")</p>
