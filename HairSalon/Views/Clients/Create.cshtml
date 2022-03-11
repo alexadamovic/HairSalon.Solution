@@ -2,15 +2,9 @@
   Layout = "_Layout";
 }
 
-@using HairSalon.Models
 @model HairSalon.Models.Client
 
 <h4>Add a new client</h4>
-
-@if (@Model.Clients.Count == 0)
-{
-  <h3>No current stylists; please add first stylist before first client</h3>
-}
 
 @using (Html.BeginForm())
 {
@@ -22,4 +16,4 @@
 
   <input type="submit" value="Add new client"/>
 }
-<p>@Html.ActionLink("Back to Stylists", "Stylists", "Index")</p>
+<p>@Html.ActionLink("Back to Stylists", "Index", "Stylists")</p>
