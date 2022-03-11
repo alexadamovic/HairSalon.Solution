@@ -2,6 +2,7 @@
   Layout = "_Layout";
 }
 
+@using HairSalon.Models
 @model HairSalon.Models.Stylist
 
 <h2>@Model.Name's Clients</h2>
@@ -11,10 +12,10 @@
   <h3>No current clients</h3>
 }
 
-@* @foreach (Client client in Model.Clients)
+@foreach (Client client in Model.Clients)
 {
   <h3>@client.Name</h3>
-} *@
+}
 
 <hr />
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
