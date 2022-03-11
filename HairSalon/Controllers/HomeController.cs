@@ -4,16 +4,17 @@ using Microsoft.AspNetCore.Mvc;
 using HairSalon.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace HairSalon.Controllers
 {
   public class HomeController : Controller
   {
-    private readonly HairSalonContext _clientsDb;
+    private readonly HairSalonContext _db;
 
     public HomeController(HairSalonContext db)
     {
-      _clientsDb = db;
+      _db = db;
     }
 
     [HttpGet("/")]
@@ -27,10 +28,10 @@ namespace HairSalon.Controllers
       return View();
     }
 
-    [HttpPost, ActionName("Search")]
+    [HttpPost("/")]
     public ActionResult Search(string search)
     {
-      var thisClient = _clientsDb.Clients.FirstOrDefault(client => String.Equals(client.Name, search));
+      var thisClient = _db.Clients.FirstOrDefault(client => String.Equals(client.Name, search));
 
       if (thisClient != null)
       {
@@ -38,8 +39,7 @@ namespace HairSalon.Controllers
       }
       else
       {
-        // Search unsuccessful return to failure page
-        return RedirectToAction("Index");
+        return RedirectToAction("SearchFail");
       }
     }
   }
