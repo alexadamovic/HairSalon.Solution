@@ -43,30 +43,38 @@ _This C# web application, styled as an employee / client management portal for E
 * _open MySql Workbench_
 * _in the Navigator > Administration window, select Data Import/Restore_
 * _in Import Options select Import from Self-Contained File_
-* _navigate to the file alex\_adamovic.sql in the root directory of this project_
+* _navigate to the file ```alex_adamovic.sql``` in the root directory of this project_
+* _under Default Schema to be Imported To, select the New button_
+* _enter the desired name of your database (you will need this name to set up your appsettings.json file properly)_
+* _click Ok_
+* _navigate to the tab called Import Progress and click Start Import at the bottom right corner of the window_
+* _your database is now ready to incorporate into this project_
 
-Under Default Schema to be Imported To, select the New button.
+#### To Create appsettings.json
 
-Enter the name of your database with _test appended to the end.
-In this case to_do_list_test.
-Click Ok.
-Navigate to the tab called Import Progress and click Start Import at the bottom right corner of the window.
-
-#### To Run MSTest
-
-* _navigate to the subdirectory VendorOrderTracker.Tests and enter ```dotnet test``` to run developer tests with MSTest_
-* _all tests outlined in the VendorTests.cs and OrderTests.cs files in the VendorOrderTracker.Tests/ModelTests folder will run_
+* _navigate to the subdirectory HairSalon and create the file ```appsettings.json```_
+* _add the following code:_
+```
+{
+  "ConnectionStrings": {
+      "DefaultConnection": "Server=localhost;Port=3306;database=[YOUR_DATABASE];uid=[YOUR_USER_ID];pwd=[YOUR_PASSWORD];"
+  }
+}
+```
+* _replace the applicable sections with your database name, your user ID, and your password_
+* _you are now ready to run the application_
 
 #### To Run the Web Application
 
-* _navigate to the subdirectory VendorOrderTracker and enter ```dotnet run``` to start a local server for the application_
+* _navigate to the subdirectory HairSalon and enter ```dotnet run``` for a snapshot server or ```dotnet watch run``` for a live updating server for the application_
 * _access the server in your browser by entering ```localhost:5000``` into your navigation bar_
 * _click the hyperlinks and submit forms to navigate between the views_
 * _enter ```ctrl``` + ```c``` for Windows or ```command``` + ```.``` for Mac in your terminal/command line to stop the server_
 
 ## Known Bugs
 
-* _none_
+* _user can still manually navigate to create client view in their browser to create a Client object before creating a Stylist object_
+* _because the value will be set to "null", client will only be available via search and not in the stylist list pages_
 
 ## License
 
